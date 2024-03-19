@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AuthManager;
 
@@ -16,7 +17,7 @@ use app\Http\Controllers\AuthManager;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user');
 });
 
 
@@ -24,6 +25,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
+// Route::get('/addProduct',[ProductController::class , 'create'])->name('product.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

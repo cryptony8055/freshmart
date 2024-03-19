@@ -26,6 +26,10 @@ Route::get('/dashboard', function () {
 Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
 Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
 
+
+Route::get('/cta/index',[ProductController::class , 'index'])->name('product.index');
+Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

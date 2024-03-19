@@ -1,10 +1,17 @@
 @extends('layout.main')
 @section('admincontent')
 <div class="row">
-    <div class="col-lg-12 d-flex align-items-stretch">
+    <div class="col-lg-12 d-flex">
       <div class="card w-100">
         <div class="card-body p-4">
-          <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
+            </div>
+            <div class="col-md-6" style="text-align: right">
+              <a class="btn btn-success" href = "{{route('product.create')}}">Add Product</a>
+            </div>
+          </div>
           <div class="table-responsive">
             <table class="table text-nowrap mb-0 align-middle">
               <thead class="text-dark fs-4">
@@ -107,9 +114,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-2 m-3">
-        <button class="btn btn-success form-control" onclick="window.location.href = '{{route('product.create')}}'">Add Product</button>
     </div>
 </div>
 @endsection

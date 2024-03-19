@@ -42,14 +42,14 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">PRODUCT</span>
+              <span class="hide-menu">MENU</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('product.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-arrow-up"></i>
                 </span>
-                <span class="hide-menu">Add Product</span>
+                <span class="hide-menu">Product</span>
               </a>
             </li>
           </ul>
@@ -117,3 +117,4 @@
         </nav>
       </header>
       <!--  Header End -->
+      <div class="container-fluid">

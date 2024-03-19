@@ -9,20 +9,23 @@
             <table class="table text-nowrap mb-0 align-middle">
               <thead class="text-dark fs-4">
                 <tr>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Id</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Sl no.</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Assigned</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Product Name</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Name</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Product Price</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Priority</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Description</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Budget</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Created By</h6>
+                  </th>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Status</h6>
                   </th>
                 </tr>
               </thead>

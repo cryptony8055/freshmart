@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
-// Route::get('/addProduct',[ProductController::class , 'create'])->name('product.create');
+Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

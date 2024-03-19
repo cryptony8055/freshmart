@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/logos/favicon.png') }}" />
+  <title>FRESHMART</title>
+  <link rel="shortcut icon" type="image/png" href="{{ asset('assets\img\logo.png') }}" />
   <link rel="stylesheet" href="{{asset('assets/css/styles.min.css') }}" />
 </head>
 
@@ -46,7 +46,7 @@
                   <input type="submit" class="btn btn-success w-100 py-8 fs-4 mb-4 rounded-2" value = "Sign In">
                   <!-- <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a> -->
                   <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-bold">New to Modernize?</p>
+                    <p class="fs-4 mb-0 fw-bold">New to Freshmart?</p>
                     <a class="text-success fw-bold ms-2" href="./authentication-register.html">Create an account</a>
                   </div>
                 </form>

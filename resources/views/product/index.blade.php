@@ -1,91 +1,38 @@
 @extends('layout.main')
 @section('admincontent')
-<div class="row col-12">
-    {{-- <div class="col-lg-4 d-flex align-items-stretch">
+<div class="row">
+    <div class="col-lg-12 d-flex">
       <div class="card w-100">
         <div class="card-body p-4">
-          <div class="mb-4">
-            <h5 class="card-title fw-semibold">Recent Transactions</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
+            </div>
+            <div class="col-md-6" style="text-align: right">
+              <a class="btn btn-success" href = "{{route('product.create')}}">Add Product</a>
+            </div>
           </div>
-          <ul class="timeline-widget mb-0 position-relative mb-n5">
-            <li class="timeline-item d-flex position-relative overflow-hidden">
-              <div class="timeline-time text-dark flex-shrink-0 text-end">09:30</div>
-              <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
-                <span class="timeline-badge-border d-block flex-shrink-0"></span>
-              </div>
-              <div class="timeline-desc fs-3 text-dark mt-n1">Payment received from John Doe of $385.90</div>
-            </li>
-            <li class="timeline-item d-flex position-relative overflow-hidden">
-              <div class="timeline-time text-dark flex-shrink-0 text-end">10:00 am</div>
-              <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                <span class="timeline-badge border-2 border border-info flex-shrink-0 my-8"></span>
-                <span class="timeline-badge-border d-block flex-shrink-0"></span>
-              </div>
-              <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New sale recorded <a
-                  href="javascript:void(0)" class="text-primary d-block fw-normal">#ML-3467</a>
-              </div>
-            </li>
-            <li class="timeline-item d-flex position-relative overflow-hidden">
-              <div class="timeline-time text-dark flex-shrink-0 text-end">12:00 am</div>
-              <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-                <span class="timeline-badge-border d-block flex-shrink-0"></span>
-              </div>
-              <div class="timeline-desc fs-3 text-dark mt-n1">Payment was made of $64.95 to Michael</div>
-            </li>
-            <li class="timeline-item d-flex position-relative overflow-hidden">
-              <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
-              <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                <span class="timeline-badge border-2 border border-warning flex-shrink-0 my-8"></span>
-                <span class="timeline-badge-border d-block flex-shrink-0"></span>
-              </div>
-              <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New sale recorded <a
-                  href="javascript:void(0)" class="text-primary d-block fw-normal">#ML-3467</a>
-              </div>
-            </li>
-            <li class="timeline-item d-flex position-relative overflow-hidden">
-              <div class="timeline-time text-dark flex-shrink-0 text-end">09:30 am</div>
-              <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                <span class="timeline-badge border-2 border border-danger flex-shrink-0 my-8"></span>
-                <span class="timeline-badge-border d-block flex-shrink-0"></span>
-              </div>
-              <div class="timeline-desc fs-3 text-dark mt-n1 fw-semibold">New arrival recorded 
-              </div>
-            </li>
-            <li class="timeline-item d-flex position-relative overflow-hidden">
-              <div class="timeline-time text-dark flex-shrink-0 text-end">12:00 am</div>
-              <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                <span class="timeline-badge border-2 border border-success flex-shrink-0 my-8"></span>
-              </div>
-              <div class="timeline-desc fs-3 text-dark mt-n1">Payment Done</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> --}}
-    <div class="col-lg-8 d-flex align-items-stretch">
-      <div class="card w-100">
-        <div class="card-body p-4">
-          <h5 class="card-title fw-semibold mb-4">Recent Transactions</h5>
           <div class="table-responsive">
             <table class="table text-nowrap mb-0 align-middle">
               <thead class="text-dark fs-4">
                 <tr>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Id</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Sl no.</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Assigned</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Product Name</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Name</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Product Price</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Priority</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Description</h6>
                   </th>
-                  <th class="border-bottom-0">
-                    <h6 class="fw-semibold mb-0">Budget</h6>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Created By</h6>
+                  </th>
+                  <th class="border-bottom-1">
+                    <h6 class="fw-semibold mb-0">Status</h6>
                   </th>
                 </tr>
               </thead>
@@ -168,5 +115,5 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 @endsection

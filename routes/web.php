@@ -30,6 +30,7 @@ Route::post('/product/addProduct',[ProductController::class , 'store'])->name('p
 
 Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
 Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
+Route::post('/category/addcategory',[CategoryController::class , 'store'])->name('category.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

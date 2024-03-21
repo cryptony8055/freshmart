@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use app\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        return view('category.categoryindex');
     }
 
     /**
@@ -21,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.addcategory');
     }
 
     /**
@@ -29,7 +31,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'inputCategoryName' => 'required',
+        ]);
+        // $loggedInUser = auth()->user();
+        // $userName = $loggedInUser->id;
+        $userName = 1;
+        $category = new Category();
+        $category->name = $request->inputCategoryName;
+        $category->created_by = $userName;
+        $category->save();
+        return Redirect::route('category.create')->with('status', 'category-added-successfully');
     }
 
     /**

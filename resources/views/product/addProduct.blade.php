@@ -5,15 +5,16 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Add Product</h5>
-            <form>
+            <form method="POST" action="{{route('product.store')}}">
+              @csrf
               <div class="row card-body">
                 <div class="col-6 mb-3">
-                  <label for="inputProductaName" class="form-label">Product Name</label>
-                  <input type="text" class="form-control" id="inputProductaName" >
+                  <label for="inputProductName" class="form-label">Product Name</label>
+                  <input type="text" name="inputProductName" class="form-control" id="inputProductName" >
                 </div>
                 <div class="col-6 mb-3">
                   <label for="inputProductPrice" class="form-label">Enter Price</label>
-                  <input type="number" class="form-control" id="inputProductPrice">
+                  <input type="number" name="inputProductPrice" class="form-control" id="inputProductPrice">
                 </div>
                 <div class="col-12 mb-3">
                   <label for="inputProductDescription" class="form-label">Enter Description</label>

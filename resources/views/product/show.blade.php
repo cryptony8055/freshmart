@@ -1,6 +1,7 @@
 @extends('layout.main')
 @section('admincontent')
 <div class="row">
+  @csrf
     <div class="col-lg-12 d-flex">
       <div class="card w-100">
         <div class="card-body p-4">
@@ -37,21 +38,26 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($data as $data )
                 <tr>
-                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0"></h6></td>
+                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{$data->id}}</h6></td>
                     <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1"></h6>
+                        <h6 class="fw-semibold mb-1">{{$data->product_name}}</h6>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"></p>
+                      <p class="mb-0 fw-normal">{{$data->product_price}}</p>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal"></p>
+                      <p class="mb-0 fw-normal">{{$data->description}}</p>
                     </td>
                     <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0 fs-4"></h6>
+                      <h6 class="fw-semibold mb-0 fs-4">{{$data->created_by}}</h6>
                     </td>
-                </tr>                              
+                    <td class="border-bottom-0">
+                      <h6 class="fw-semibold mb-0 fs-4">{{$data->status}}</h6>
+                    </td>
+                </tr>  
+                @endforeach                            
               </tbody>
             </table>
           </div>

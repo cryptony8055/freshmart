@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.categoryindex');
+        $data = Category::with('createdCategory:id,name')->get();
+        return view('category.categoryindex',compact('data'));
     }
 
     /**

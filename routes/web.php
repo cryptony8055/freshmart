@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AuthManager;
 
@@ -27,6 +28,10 @@ Route::get('/product/index',[ProductController::class , 'index'])->name('product
 Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
 Route::get('/product/show',[ProductController::class , 'show'])->name('product.show');
 Route::post('/product/addProduct',[ProductController::class , 'store'])->name('product.store');
+
+Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
+Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
+Route::post('/category/addcategory',[CategoryController::class , 'store'])->name('category.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

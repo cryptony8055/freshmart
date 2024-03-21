@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product->description = $request->inputProductDescription;
         $product->created_by = $userName;
         $product->save();
-        return Redirect::route('product.create')->with('status', 'product-added-successfully');
+        return Redirect::route('product.show')->with('status', 'product-added-successfully');
     }
 
     /**

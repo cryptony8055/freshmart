@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use app\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Redirect;
+
 
 class ProductController extends Controller
 {
@@ -29,7 +32,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'inputProductPrice' => 'required',
+            'inputProductName' => 'required',
+            'inputProductDescription' => 'required',
+        ]);
+        $loggedInUser = auth()->user();
+        $userName = $loggedInUser->id;
+        $product = new Product();
+        $product->catagory_id = 1;
+        $product->product_price = $request->inputProductPrice;
+        $product->product_name = $request->inputProductName;
+        $product->description = $request->inputProductDescription;
+        $product->created_by = $userName;
+        $product->save();
+        return Redirect::route('product.create')->with('status', 'product-added-successfully');
     }
 
     /**

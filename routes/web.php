@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AuthManager;
 
@@ -26,9 +27,8 @@ Route::get('/dashboard', function () {
 Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
 Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
 
-
-Route::get('/cta/index',[ProductController::class , 'index'])->name('product.index');
-Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
+Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
+Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

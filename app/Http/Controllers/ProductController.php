@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use app\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Category;
 
 
 class ProductController extends Controller
@@ -16,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index');
+        $data = Product::with('createdUser:id,name')->get();
+        return view('product.index',compact('data'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.addProduct');
+        $categories = Category::select('id', 'name')->get();
+        return view('product.addProduct',compact('categories'));
     }
 
     /**
@@ -44,9 +47,10 @@ class ProductController extends Controller
         $product->product_price = $request->inputProductPrice;
         $product->product_name = $request->inputProductName;
         $product->description = $request->inputProductDescription;
+        $product->catagory_id = $request->selectCategoryId;
         $product->created_by = $userName;
         $product->save();
-        return Redirect::route('product.show')->with('status', 'product-added-successfully');
+        return Redirect::route('product.create')->with('status', 'product-added-successfully');
     }
 
     /**
@@ -54,8 +58,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $data = Product::all();
-        return view('product.show',compact('data'));
+        // $data = Product::all();
+        // return view('product.show',compact('data'));
     }
 
     /**

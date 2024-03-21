@@ -21,9 +21,10 @@ Route::get('/', function () {
     return view('user');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
 Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
 Route::get('/product/show',[ProductController::class , 'show'])->name('product.show');

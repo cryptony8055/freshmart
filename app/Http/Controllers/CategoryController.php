@@ -41,6 +41,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->inputCategoryName;
         $category->created_by = $userName;
+        $category->status = true;
         $category->save();
         return Redirect::route('category.create')->with('status', 'category-added-successfully');
     }

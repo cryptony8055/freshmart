@@ -26,10 +26,10 @@
                     <h6 class="fw-semibold mb-0">Created By</h6>
                   </th>
                   <th class="border-bottom-1">
-                    <h6 class="fw-semibold mb-0">Created At</h6>
+                    <h6 class="fw-semibold mb-0">Status</h6>
                   </th>
                   <th class="border-bottom-1">
-                    <h6 class="fw-semibold mb-0">Status</h6>
+                    <h6 class="fw-semibold mb-0">Created At</h6>
                   </th>
                 </tr>
               </thead>

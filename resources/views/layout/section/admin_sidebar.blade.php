@@ -5,8 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FRESHMART</title>
-  <link rel="shortcut icon" type="image/png" href="{{asset('assets/img/logos/favicon.png')}}" />
+  <link rel="shortcut icon" type="image/png" href="{{asset('assets/img/logosymbol.png')}}" />
   <link rel="stylesheet" href="{{asset('assets/css/styles.min.css')}}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -84,12 +85,12 @@
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link nav-icon-hover" href="javascript:void(0)">
                 <i class="ti ti-bell-ringing"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
-            </li>
+            </li> --}}
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">

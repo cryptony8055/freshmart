@@ -12,7 +12,4 @@ class Product extends Model
     public function createdUser(){
         return $this->belongsTo(User::class,'created_by');
     }
-    public function categoryId(){
-        return $this->belongsTo(Category::class,'category_id');
-    }
 }

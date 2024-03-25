@@ -25,11 +25,17 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
-Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
-Route::post('/product/addProduct',[ProductController::class , 'store'])->name('product.store');
-Route::get('/edit-product/{id}',[ProductController::class , 'edit'])->name('product.edit');
-Route::put('/update-product/{id}',[ProductController::class , 'update'])->name('product.update');
+
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
+    Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
+    Route::post('/product/addProduct',[ProductController::class , 'store'])->name('product.store');
+    Route::get('/edit-product/{id}',[ProductController::class , 'edit'])->name('product.edit');
+    Route::put('/update-product/{id}',[ProductController::class , 'update'])->name('product.update');
+    Route::get('/delete-product/{id}',[ProductController::class , 'destroy'])->name('product.destroy');
+    Route::post('/toggle-status/{id}',[ProductController::class , 'toggleStatus'])->name('product.toggleStatus');
+});
+
 
 Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
 Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');

@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = Product::with('createdUser:id,name')->get();
+        $data = Product::with('createdUser:id,name')->orderby('id')->get();
         return view('product.index',compact('data'));
     }
 
@@ -95,11 +95,19 @@ class ProductController extends Controller
         return Redirect::route('product.edit',[$id])->with('status', 'product-updated-successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Product $product)
+    public function destroy(Request $request,$id)
     {
-        //
+        //deletes product
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return Redirect::route('product.index')->with('status', 'product-deleted-successfully');
+    }
+
+    public function toggleStatus($id){
+        //updates status
+        $product = Product::findOrFail($id);
+        $product->status = !$product->status;
+        $product->update();
+        return response()->json(['status' => $product->status]);
     }
 }

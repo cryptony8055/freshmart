@@ -37,6 +37,21 @@
         });
     });
 });
+function addImage(){
+      var cnt = parseInt($('#addMoreCount').val());
+      if(cnt<5){
+        var imageContentHtml = $('#imageContent').html();
+        var appendImageHtml = $('#imageAppend').append(imageContentHtml);
+        $(appendImageHtml).find(".change").html('<button type="button" class="btn btn-danger form-control" id="remove">Remove</button>');
+        $('#addMoreCount').val(cnt+1);
+      }
+    }
+$(document).on("click","#remove",function(){
+var cnt = parseInt($('#addMoreCount').val());
+$(this).parents('.pg').remove();
+$('#addMoreCount').val(cnt-1);
+});
+
 
 </script>
 </body>

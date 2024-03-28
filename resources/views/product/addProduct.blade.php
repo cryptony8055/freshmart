@@ -1,9 +1,8 @@
 @extends('layout.main')
 @section('admincontent')
-<div class="container-fluid">
   <div class="container-fluid">
     <div class="card">
-      <form method="POST" action="{{route('product.store')}}">
+      <form method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="card-body row">
           <h5 class="fw-semibold mx-auto">Add Product</h5>
@@ -41,7 +40,7 @@
             <div id="imageContent">
               <div class="card-body mb-1 row pg">
                 <div class="col-10">
-                    <input type="file" name="uploadImage" class="form-control" name="image" id="uploadImage"></input>
+                    <input type="file" name="uploadImage[]" class="form-control" name="image" id="uploadImage" multiple></input>
                 </div>
                 <div class="col-2 change">
                     <button type="button" class="btn btn-success form-control" onclick="addImage()">Add more</button>
@@ -60,5 +59,4 @@
       </form>
     </div>
   </div>
-</div>
 @endsection

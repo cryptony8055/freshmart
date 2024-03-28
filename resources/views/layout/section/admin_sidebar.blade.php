@@ -9,6 +9,17 @@
   <link rel="stylesheet" href="{{asset('assets/css/styles.min.css')}}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/elegant-icons.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/slicknav.min.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
+
 </head>
 
 <body>

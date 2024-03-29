@@ -18,22 +18,34 @@ use app\Http\Controllers\AuthManager;
 |
 */
 
-Route::get('/', function () {
-    return view('user');
-});
+
 Route::get('/',[userController::class , 'index'])->name('user.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
-Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
-Route::get('/product/show',[ProductController::class , 'show'])->name('product.show');
-Route::post('/product/addProduct',[ProductController::class , 'store'])->name('product.store');
 
-Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
-Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
-Route::post('/category/addcategory',[CategoryController::class , 'store'])->name('category.store');
+
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/product/index',[ProductController::class , 'index'])->name('product.index');
+    Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
+    Route::post('/product/addProduct',[ProductController::class , 'store'])->name('product.store');
+    Route::get('/edit-product/{id}',[ProductController::class , 'edit'])->name('product.edit');
+    Route::put('/update-product/{id}',[ProductController::class , 'update'])->name('product.update');
+    Route::get('/delete-product/{id}',[ProductController::class , 'destroy'])->name('product.destroy');
+    Route::post('/toggle-status/{id}',[ProductController::class , 'toggleStatus'])->name('product.toggleStatus');
+});
+
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
+    Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
+    Route::post('/category/addcategory',[CategoryController::class , 'store'])->name('category.store');
+    Route::get('/edit-category/{id}',[CategoryController::class , 'edit'])->name('category.edit');
+    Route::put('/update-category/{id}',[CategoryController::class , 'update'])->name('category.update');
+    Route::get('/delete-category/{id}',[CategoryController::class , 'destroy'])->name('category.destroy');
+    Route::post('/toggle-status-cat/{id}',[CategoryController::class , 'toggleStatusCat'])->name('category.toggleStatus');
+});
+    Route::get('users-index',[userController::class,'userslisting'])->name('users.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

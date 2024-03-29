@@ -57,24 +57,43 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $data = Category::find($id);
+        $categories = Category::select('id', 'name')->get();
+        return view('category.categoryedit',compact('data','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'inputCategoryName' => 'required',
+        ]);
+
+        $category = Category::find($id);
+        $loggedInUser = auth()->user();
+        $category->name = $request->inputCategoryName;
+        $category->update();
+        return Redirect::route('category.index')->with('status', 'category-updated-successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return Redirect::route('category.index')->with('status', 'category-deleted-successfully');
+    }
+    public function toggleStatusCat($id){
+        //updates status
+        $category = Category::findOrFail($id);
+        $category->status = !$category->status;
+        $category->update();
+        return response()->json(['status' => $category->status]);
     }
 }

@@ -13,7 +13,7 @@
                             @if($data)
                             <ul>
                             @foreach($data as $item )
-                                <li><a href="#">{{$item}}</a></li>
+                                <li><a href="">{{$item}}</a></li>
                             @endforeach 
                             </ul>
                             @endif 

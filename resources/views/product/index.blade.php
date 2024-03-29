@@ -13,7 +13,8 @@
               <a class="btn btn-success shadow rounded mb-3" href = "{{route('product.create')}}">Add Product</a>
             </div>
           </div>
-          <div class="table-responsive shadow bg-white rounded">
+          <hr class="bg-dark" style="height: 1px;">
+          <div class="table-responsive shadow bg-white rounded p-3">
             <table class="table text-nowrap mb-0 align-middle">
               <thead class="text-dark fs-4">
                 <tr>
@@ -25,12 +26,6 @@
                   </th>
                   <th class="border-bottom-1">
                     <h6 class="fw-semibold mb-0">Product Price</h6>
-                  </th>
-                  <th class="border-bottom-1">
-                    <h6 class="fw-semibold mb-0">Description</h6>
-                  </th>
-                  <th class="border-bottom-1">
-                    <h6 class="fw-semibold mb-0">Created By</h6>
                   </th>
                   <th class="border-bottom-1">
                     <h6 class="fw-semibold mb-0">Created At</h6>
@@ -55,13 +50,7 @@
                       <p class="mb-0 fw-normal">{{$item->product_price}}</p>
                     </td>
                     <td class="border-bottom-0">
-                      <p class="mb-0 fw-normal">{{$item->description}}</p>
-                    </td>
-                    <td class="border-bottom-0">
                       <h6 class="fw-normal mb-0 fs-4">{{$item->createdUser->name}}</h6>
-                    </td>
-                    <td class="border-bottom-0">
-                      <h6 class="fw-normal mb-0 fs-4">{{$item->created_at}}</h6>
                     </td>
                     <td class="border-bottom-0"> 
                       <input type="checkbox"  id="toggleCheckbox" data-product-id="{{ $item->id }}" {{ $item->status ? 'checked' : '' }} data-toggle="toggle" data-onstyle="outline-success" data-offstyle="outline-danger">

@@ -57,7 +57,7 @@ class ProductController extends Controller
         foreach($images as $image){
             // dd($images);
 
-            $path = $image->store('uploadImage', 'public');
+            $path = $image->store('images', 'public');
 
             // Save the image location to the database
             $imageModel = new productImage();
@@ -86,7 +86,7 @@ class ProductController extends Controller
     {
         $data = Product::find($id);
         $categories = Category::select('id', 'name')->get();
-        $images = productImage::where('product_id',$id)->pluck('image_url','serial_number')->toArray();
+        $images = productImage::where('product_id',$id)->get();
         // dd($images);
         return view('product.edit',compact('data','categories','images'));
     }
@@ -94,7 +94,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
         $request->validate([
             'inputProductPrice' => 'required',
@@ -103,6 +103,7 @@ class ProductController extends Controller
             'selectCategoryId' => 'required',
         ]);
 
+        $id = $request->hiddenId;
         $product = Product::find($id);
         $loggedInUser = auth()->user();
         $product->updated_by = $loggedInUser->id;
@@ -110,7 +111,25 @@ class ProductController extends Controller
         $product->product_price = $request->inputProductPrice;
         $product->catagory_id = $request->selectCategoryId;
         $product->description = $request->inputProductDescription;
-        $product->update();
+        $product->save();
+        $images = $request->file('uploadImage');
+        $serial_num = 1;
+        if($images){
+            foreach($images as $image){
+                // dd($images);
+    
+                $path = $image->store('uploadImage', 'public');
+    
+                // Save the image location to the database
+                $imageModel = new productImage();
+                $imageModel->product_id = $product->id;
+                $imageModel->image_status = false;
+                $imageModel->serial_number = $serial_num++;
+                $imageModel->image_url = $path;
+                $imageModel->save();
+            }
+        }
+
         return Redirect::route('product.edit',[$id])->with('status', 'product-updated-successfully');
     }
 
@@ -129,4 +148,11 @@ class ProductController extends Controller
         $product->update();
         return response()->json(['status' => $product->status]);
     }
+    public function imageDelete($id){
+        //updates status
+        $product = ProductImage::findOrFail($id);
+        $product->delete();
+        return redirect()->back();
+    }
+
 }

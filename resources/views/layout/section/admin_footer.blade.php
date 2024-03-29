@@ -50,6 +50,7 @@
         });
     });
 });
+
 function addImage(){
       var cnt = parseInt($('#addMoreCount').val());
       if(cnt<5){
@@ -64,6 +65,7 @@ var cnt = parseInt($('#addMoreCount').val());
 $(this).parents('.pg').remove();
 $('#addMoreCount').val(cnt-1);
 });
+
 
 
 </script>

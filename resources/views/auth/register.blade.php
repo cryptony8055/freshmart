@@ -40,11 +40,11 @@
                     <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                     <input type="password"  name="Confirmpassword" class="form-control" id="exampleInputPassword2">
                   </div>
-                  <input type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Sign Up">
+                  <input type="submit" class="btn btn-success w-100 py-8 fs-4 mb-4 rounded-2" value="Sign Up">
                   <!-- <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a> -->
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                    <a class="text-primary fw-bold ms-2" href="./authentication-login.html">Sign In</a>
+                    <a class="text-primary fw-bold ms-2" href="{{ route('login') }}">Sign In</a>
                   </div>
                 </form>
               </div>

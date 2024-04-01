@@ -1,6 +1,4 @@
-        <div class="py-6 px-6 text-center">
-          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
-        </div>
+
       </div>
     </div>
   </div>
@@ -16,6 +14,26 @@
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 <script>
   $(document).ready(function() {
+        $(document).on('change', '#toggleCheckbox1', function() {
+        var categoryId = $(this).data('category-id');
+        console.log(categoryId);
+        var status = $(this).is(':checked');
+        console.log(status);
+
+        $.ajax({
+            url: '/toggle-status-cat/' + categoryId,
+            type: 'POST',
+            dataType: 'json',
+            data: {_token: '{{ csrf_token() }}'},
+            success: function(response) {
+                if (response.status) {
+                    $('#toggleCheckbox1').prop('checked', true);
+                } else {
+                    $('#toggleCheckbox1').prop('checked', false);
+                }
+            }
+        });
+    });
     $(document).on('change', '#toggleCheckbox', function() {
         var productId = $(this).data('product-id');
         console.log(productId);

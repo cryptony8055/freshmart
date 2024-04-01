@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AuthManager;
 
@@ -17,9 +18,8 @@ use app\Http\Controllers\AuthManager;
 |
 */
 
-Route::get('/', function () {
-    return view('user');
-});
+
+Route::get('/',[userController::class , 'index'])->name('user.index');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -36,10 +36,16 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::post('/toggle-status/{id}',[ProductController::class , 'toggleStatus'])->name('product.toggleStatus');
 });
 
-
-Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
-Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
-Route::post('/category/addcategory',[CategoryController::class , 'store'])->name('category.store');
+Route::middleware(['auth','verified'])->group(function(){
+    Route::get('/category/categoryindex',[CategoryController::class , 'index'])->name('category.index');
+    Route::get('/category/addcategory',[CategoryController::class , 'create'])->name('category.create');
+    Route::post('/category/addcategory',[CategoryController::class , 'store'])->name('category.store');
+    Route::get('/edit-category/{id}',[CategoryController::class , 'edit'])->name('category.edit');
+    Route::put('/update-category/{id}',[CategoryController::class , 'update'])->name('category.update');
+    Route::get('/delete-category/{id}',[CategoryController::class , 'destroy'])->name('category.destroy');
+    Route::post('/toggle-status-cat/{id}',[CategoryController::class , 'toggleStatusCat'])->name('category.toggleStatus');
+});
+    Route::get('users-index',[userController::class,'userslisting'])->name('users.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

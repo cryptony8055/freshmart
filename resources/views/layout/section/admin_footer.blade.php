@@ -3,6 +3,19 @@
     </div>
   </div>
 </div>
+
+
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script> --}}
+<script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
+<script src="{{ asset('assets/js/mixitup.min.js') }}"></script>
+<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+
 <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
@@ -55,6 +68,23 @@
         });
     });
 });
+
+function addImage(){
+      var cnt = parseInt($('#addMoreCount').val());
+      if(cnt<5){
+        var imageContentHtml = $('#imageContent').html();
+        var appendImageHtml = $('#imageAppend').append(imageContentHtml);
+        $(appendImageHtml).find(".change").html('<button type="button" class="btn btn-danger form-control" id="remove">Remove</button>');
+        $('#addMoreCount').val(cnt+1);
+      }
+    }
+$(document).on("click","#remove",function(){
+var cnt = parseInt($('#addMoreCount').val());
+$(this).parents('.pg').remove();
+$('#addMoreCount').val(cnt-1);
+});
+
+
 
 </script>
 </body>

@@ -31,9 +31,10 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/product/addProduct',[ProductController::class , 'create'])->name('product.create');
     Route::post('/product/addProduct',[ProductController::class , 'store'])->name('product.store');
     Route::get('/edit-product/{id}',[ProductController::class , 'edit'])->name('product.edit');
-    Route::put('/update-product/{id}',[ProductController::class , 'update'])->name('product.update');
+    Route::post('/update-product',[ProductController::class , 'update'])->name('product.update');
     Route::get('/delete-product/{id}',[ProductController::class , 'destroy'])->name('product.destroy');
     Route::post('/toggle-status/{id}',[ProductController::class , 'toggleStatus'])->name('product.toggleStatus');
+    Route::get('/delete-image/{id}',[ProductController::class , 'imageDelete'])->name('product.imageDelete');
 });
 
 Route::middleware(['auth','verified'])->group(function(){

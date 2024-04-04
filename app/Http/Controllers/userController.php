@@ -13,8 +13,9 @@ class userController extends Controller
     public function index()
     {
         $data = Category::where('status',true)->pluck('name','id')->toArray();
-        // dd($data);
-        return view('user',compact('data'));
+        $category_data = Category::select('name','id','image_url')->where('status',true)->get();
+        // dd($category_data);
+        return view('user',compact('data','category_data'));
     }
 
     public function userslisting()

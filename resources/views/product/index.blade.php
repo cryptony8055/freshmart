@@ -40,9 +40,9 @@
               </thead>
               <tbody>
                 @if($data)
-                @foreach ($data as $item )
+                @foreach ($data as  $key => $item )
                 <tr>
-                    <td class="border-bottom-0"><h6 class="fw-normal mb-0">{{$item->id}}</h6></td>
+                    <td class="border-bottom-0"><h6 class="fw-normal mb-0">{{$key+1}}</h6></td>
                     <td class="border-bottom-0">
                         <h6 class="fw-normal mb-1">{{$item->product_name}}</h6>
                     </td>

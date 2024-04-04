@@ -29,7 +29,7 @@
   $(document).ready(function() {
         $(document).on('change', '#toggleCheckbox1', function() {
         var categoryId = $(this).data('category-id');
-        console.log(categoryId);
+        // console.log(categoryId);
         var status = $(this).is(':checked');
         console.log(status);
 
@@ -49,7 +49,7 @@
     });
     $(document).on('change', '#toggleCheckbox', function() {
         var productId = $(this).data('product-id');
-        console.log(productId);
+        // console.log(productId);
         var status = $(this).is(':checked');
         console.log(status);
 

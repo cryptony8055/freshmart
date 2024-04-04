@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\AuthManager;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use app\Http\Controllers\AuthManager;
 
 
 Route::get('/',[userController::class , 'index'])->name('user.index');
+Route::get('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('user.logout');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');

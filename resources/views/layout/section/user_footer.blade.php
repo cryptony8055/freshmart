@@ -8,8 +8,8 @@
                             <a href="./index.html"><src="<img src="{{ asset('img/logo.png') }}" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
+                            <li>Address: Bhubaneswar</li>
+                            <li>Phone: 9348751803</li>
                             <li>Email: hello@freshmart.com</li>
                         </ul>
                     </div>
@@ -23,9 +23,9 @@
                             <li><a href="#">Secure Shopping</a></li>
                             <li><a href="#">Delivery infomation</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
                         </ul>
                         <ul>
+                            <li><a href="#">Our Sitemap</a></li>
                             <li><a href="#">Who We Are</a></li>
                             <li><a href="#">Our Services</a></li>
                             {{-- <li><a href="#">Projects</a></li> --}}

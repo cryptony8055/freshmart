@@ -51,7 +51,7 @@
             <input type="hidden" value="0" id="addMoreCount" >
           </div>
           <div class="card-body col-12 p-4">
-            <div class="col-1">
+            <div class="col-2">
               <input type="submit"class="btn btn-success form-control" value="Save">
             </div>
           </div>

@@ -14,7 +14,7 @@
                             <ul>
                             @foreach($data as $key=>$item )
                                 <li><a href="{{url('product-list?id='.$key )}}">{{$item}}</a></li>
-                            @endforeach 
+                            @endforeach
                             </ul>
                             @endif
                         </div>
@@ -64,7 +64,7 @@
                         @foreach($category_data as $key => $cat_value)
                         <div class="col-lg-3">
                             <div class="categories__item set-bg" data-setbg="{{ asset('storage/'.$cat_value->image_url) }}">
-                                <h5><a href="#">{{ $cat_value->name }}</a></h5>
+                                <h5><a href="{{url('product-list?id='.$cat_value->id )}}">{{ $cat_value->name }}</a></h5>
                             </div>
                         </div>
                         @endforeach
@@ -74,7 +74,7 @@
             </div>
         </section>
         <!-- Categories Section End -->
-        
+
         <!-- Blog Section Begin -->
         <section class="from-blog spad">
             <div class="container">

@@ -83,6 +83,7 @@
     <script src="{{ asset('assets/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.js" integrity="sha512-ySDkgzoUz5V9hQAlAg0uMRJXZPfZjE8QiW0fFMW7Jm15pBfNn3kbGsOis5lPxswtpxyY3wF5hFKHi+R/XitalA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $( document ).ready(function() {
             checkCart();
@@ -107,6 +108,7 @@
             });
         }
         $('.addToCart').click( function(){
+            // alert('clicked');
             var productId = $(this).data('product_id');
             $.ajax({
                 url: '/product-cart/',
@@ -124,6 +126,46 @@
                     } else {
                         alert(response.message);
                     }
+                }
+            });
+        })
+        $('.icon_close').click( function(){
+            // alert("im here")
+            var productId = $(this).data('product_id');
+            $.ajax({
+                url: '/product_remove/',
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id:productId,
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 'success') {
+                        // checkCart();
+                        alert(response.message);
+                        window.location.reload(true);
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        })
+        $('.cart-btn-right').click(function(){
+            window.location.reload(true);
+        })
+        $('#checkout').click(function(){
+            Swal.fire({
+            title: "Thank You!",
+            text: "Order placed successfully",
+            icon: "success",
+            confirmButtonText: "Continue Shopping",
+            confirmButtonColor: "rgb(127, 173, 57)",
+            allowOutsideClick: false,
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    window.location.href='{{route("user.index")}}';
                 }
             });
         })

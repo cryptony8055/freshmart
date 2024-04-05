@@ -12,8 +12,8 @@ class Product extends Model
     public function createdUser(){
         return $this->belongsTo(User::class,'created_by');
     }
-    public function images()
-    {
-        return $this->hasMany(ProductImage::class);
-    }
+    // public function images()
+    // {
+    //     return $this->belongsTo(ProductImage::class,'product_id','id');
+    // }
 }

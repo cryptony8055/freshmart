@@ -48,7 +48,16 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::get('/delete-category/{id}',[CategoryController::class , 'destroy'])->name('category.destroy');
     Route::post('/toggle-status-cat/{id}',[CategoryController::class , 'toggleStatusCat'])->name('category.toggleStatus');
 });
+
+Route::middleware(['auth','verified'])->group(function(){
+    //this is admin data
+    Route::get('/product-list',[userController::class , 'catProducts'])->name('customers.categoryProducts');
+    //this is customer data
+    Route::post('/product-cart',[userController::class , 'addToCart'])->name('customers.addToCart');
+    Route::get('/cart',[userController::class , 'cartProductIndex'])->name('customers.cart');
+    Route::post('/check-cart',[userController::class , 'checkCart'])->name('customers.checkCart');
     Route::get('users-index',[userController::class,'userslisting'])->name('users.index');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -83,9 +83,51 @@
     <script src="{{ asset('assets/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
-
-
+    <script>
+        $( document ).ready(function() {
+            checkCart();
+        });
+        function checkCart(){
+            $.ajax({
+                url: '/check-cart/',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 'success') {
+                        $('.crt').text(response.data);
+                    } else {
+                        alert(response.message);
+                        $('.crt').text(response.data);
+                    }
+                }
+            });
+        }
+        $('.addToCart').click( function(){
+            var productId = $(this).data('product_id');
+            $.ajax({
+                url: '/product-cart/',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id:productId,
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 'success') {
+                        checkCart();
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        })
+    </script>
 
 </body>
 

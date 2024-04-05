@@ -52,20 +52,36 @@ class userController extends Controller
     public function cartProductIndex(){
         if(Auth::check()){
             $user_id = Auth::user()->id;
-            $cartItems = customer_cart::where('user_id',$user_id)->get();
-            $productData = collect();
-            foreach($cartItems as $item){
-                $products = Product::where('id',$item->product_id)->with('images')->get();
-                $productData->push($products);
-            }
-            return view('customers.cart',compact('cartItems','productData'));
+            $cartItems = customer_cart::with('product')->where('user_id',$user_id)->orderBy('id')->get();
+            // dd($cartItems);
+            // $productData = collect();
+            // foreach($cartItems as $item){
+            //     $products = Product::where('id',$item->product_id)->with('images')->get();
+            //     $productData->push($products);
+            // }
+            return view('customers.cart',compact('cartItems'));
         } else {
             return Redirect::route('login');
         }
     }
+
+    public function increaseQuantity(Request $request){
+        if($request->product_id){
+            $user_id = Auth::user()->id;
+            $data = customer_cart::where('user_id', $user_id)->where('product_id', $request->product_id)->first();
+            $data->quantity = $request->quantity;
+            $data->save();
+
+            $response['status'] = 'success';
+            $response['message'] = 'item updated successfully';
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = 'Something went wrong';
+        }
+        return $response;
+    }
+
     public function addToCart(Request $request){
-        //updates status
-        // dd($request->all());
         $response = [];
         $product_id = $request->product_id;
         $user_id = Auth::user()->id;

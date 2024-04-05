@@ -55,6 +55,7 @@ Route::middleware(['auth','verified'])->group(function(){
     //this is customer data
     Route::post('/product-cart',[userController::class , 'addToCart'])->name('customers.addToCart');
     Route::get('/cart',[userController::class , 'cartProductIndex'])->name('customers.cart');
+    Route::get('/cart-update',[userController::class , 'increaseQuantity'])->name('customers.updateCart');
     Route::post('/check-cart',[userController::class , 'checkCart'])->name('customers.checkCart');
     Route::get('users-index',[userController::class,'userslisting'])->name('users.index');
 });

@@ -31,19 +31,26 @@
                             @foreach($cartItems as $item)
                             <tr>
                                 <td class="shoping__cart__item">
-                                    <img src="img/cart/cart-1.jpg" alt="">
-                                    {{
-                                        $pdata = $productData->pop();
-                                    }}
-                                    <h5>Vegetable’s Package</h5>
+                                    <div class="container d-flex justify-center align-items-center">
+                                        {{-- <div class="image_container" style="width: 5rem">
+                                            <img style="  width: 100%;
+                                                height: 100%;
+                                                object-fit: cover;
+                                                " src="{{Storage::disk('local')->url($url[0]['image_url'])}}" alt="">
+                                        </div> --}}
+                                        <div class="ml-5">
+                                            <h5>{{$item->product->product_name}}</h5>
+                                            {{-- <h5>{{ $cpId }}</h5> --}}
+                                        </div>
+                                    </div>
                                 </td>
                                 <td class="shoping__cart__price">
-                                    {{$pdata}}
+                                    {{$item->product->product_price}}
                                 </td>
                                 <td class="shoping__cart__quantity">
                                     <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
+                                        <div class="pro-qty" >
+                                            <input type="text" value="{{ $item->quantity }}" data-product_id="{{$item->product_id}}">
                                         </div>
                                     </div>
                                 </td>

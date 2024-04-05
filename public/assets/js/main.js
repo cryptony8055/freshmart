@@ -218,6 +218,25 @@
                 newVal = 0;
             }
         }
+        var productId = $button.parent().find('input').data('product_id');
+        $.ajax({
+            url: '/cart-update',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                _token: '{{ csrf_token() }}',
+                quantity : newVal,
+                product_id : productId,
+            },
+            success: function(response) {
+                if (response.status == 'success') {
+                    console.log("quantity increased successfully");
+                } else {
+                    alert(response.message);
+                    console.log("something went wrong");
+                }
+            }
+        });
         $button.parent().find('input').val(newVal);
     });
 

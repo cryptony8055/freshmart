@@ -55,10 +55,10 @@
                                     </div>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    $110.00
+                                    {{ $item->quantity * $item->product->product_price }}
                                 </td>
                                 <td class="shoping__cart__item__close">
-                                    <span class="icon_close"></span>
+                                    <button class="icon_close" data-product_id="{{$item->product_id}}"></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -71,7 +71,7 @@
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
                     <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                    <a class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                         Upadate Cart</a>
                 </div>
             </div>
@@ -90,10 +90,9 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal <span>$454.98</span></li>
-                        <li>Total <span>$454.98</span></li>
+                        <li>Total <span>${{$total}}</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a id="checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>
